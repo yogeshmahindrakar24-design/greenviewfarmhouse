@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gallery | Green View Farm House</title>
+
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+background:#f4f6f5;
+}
+
+header{
+background:#0f5132;
+color:white;
+padding:15px 40px;
+display:flex;
+justify-content:space-between;
+}
+
+header h2 a{
+color:white;
+text-decoration:none;
+}
+
+a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
+.gallery{
+padding:60px 10%;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.gallery img{
+width:100%;
+height:250px;
+object-fit:cover;
+border-radius:10px;
+cursor:pointer;
+transition:.3s;
+}
+
+.gallery img:hover{
+transform:scale(1.05);
+}
+
+footer{
+background:#0f5132;
+color:white;
+text-align:center;
+padding:20px;
+} 
+.img-popup{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+justify-content:center;
+align-items:center;
+z-index:1000;
+}
+
+.img-popup img{
+max-width:90%;
+max-height:90%;
+border-radius:10px;
+}
+
+.close{
+position:absolute;
+top:30px;
+right:40px;
+font-size:40px;
+color:white;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h2><a href="greenviewfarmhouse.html">Green View Farm House</a></h2>
+
+<a href="greenviewfarmhouse.html">⬅ Back to Home</a>
+
+</header>
+
+<section class="gallery">
+
+<img src="C:\Users\Yogesh\Downloads\H\green view\Images\1000376587.jpg">
+<img src="C:\Users\Yogesh\Downloads\H\green view\Images\1000451941.jpg">
+<img src="C:\Users\Yogesh\Downloads\H\green view\Images\1000376623.jpg">
+<img src="C:\Users\Yogesh\Downloads\H\green view\Images\1000376603.jpg">
+<img src="C:\Users\Yogesh\Downloads\H\green view\Images\1000451229.jpg">
+<img src="C:\Users\Yogesh\Downloads\H\green view\Images\1000376583.jpg">
+
+</section>
+
+<footer>
+
+<p>© 2026 Green View Farm House</p>
+
+</footer>
+<div id="imagePopup" class="img-popup">
+<span class="close" onclick="closeImage()">✖</span>
+<img id="popupImg">
+</div>
+<script>
+
+const images = document.querySelectorAll(".gallery img");
+const popup = document.getElementById("imagePopup");
+const popupImg = document.getElementById("popupImg");
+
+images.forEach(img => {
+
+img.addEventListener("click", () => {
+
+popup.style.display="flex";
+popupImg.src = img.src;
+
+});
+
+});
+
+function closeImage(){
+
+popup.style.display="none";
+
+}
+
+</script>
+</body>
+</html>
