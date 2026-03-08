@@ -83,11 +83,44 @@ color:#25d366;
   border-radius:5px;
   cursor:pointer;
 }
+  @media(max-width:768px){
+
+#mainHeader{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:#0f5132;
+padding:10px 0;
+z-index:1000;
+flex-direction:column;
+align-items:center;
+}
+
+#mainHeader h2{
+display:none;
+}
+
+#mainHeader nav{
+display:flex;
+justify-content:space-around;
+width:100%;
+}
+
+#mainHeader nav a{
+font-size:14px;
+}
+
+body{
+padding-bottom:70px;
+}
+
+}
 </style>
 </head>
 <body>
 
-<header>
+<header id="mainHeader">
 <h2><a href="index.html">Green View Farm House</a></h2>
 <nav>
 <a href="#home">Home</a>
@@ -219,5 +252,6 @@ document.getElementById("successPopup").style.display="none";
 </script>
 </body>
 </html>
+
 
 
