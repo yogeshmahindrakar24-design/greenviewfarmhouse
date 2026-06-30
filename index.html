@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Green View Farm House | Goregaon East, Mumbai</title>
+<meta name="description" content="Green View Farm House — a peaceful nature getaway in Goregaon East, Mumbai. Book for birthdays, family trips & private events.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --forest:#1f3a2c;
+  --forest-deep:#13261c;
+  --moss:#5d8a5f;
+  --sand:#f4ecd9;
+  --paper:#fffcf5;
+  --clay:#bd6a3c;
+  --ink:#23241f;
+  --line: rgba(31,58,44,0.16);
+  --radius: 22px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'DM Sans', sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.display{font-family:'Fraunces', serif; font-weight:600; letter-spacing:-0.01em;}
+a{color:inherit; text-decoration:none;}
+img{max-width:100%; display:block;}
+.wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
+.eyebrow{
+  font-family:'DM Mono', monospace;
+  font-size:0.72rem;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--moss);
+  display:flex; align-items:center; gap:10px;
+}
+.eyebrow::before{content:""; width:22px; height:1px; background:var(--clay);}
+
+/* ===== NAV ===== */
+header{
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  background:rgba(255,252,245,0.0);
+  transition:background .4s ease, box-shadow .4s ease, padding .3s ease;
+  padding:22px 0;
+}
+header.scrolled{background:rgba(255,252,245,0.92); backdrop-filter:blur(10px); box-shadow:0 1px 0 var(--line); padding:14px 0;}
+nav{display:flex; align-items:center; justify-content:space-between;}
+.logo{font-family:'Fraunces', serif; font-weight:600; font-size:1.25rem; display:flex; align-items:center; gap:9px;}
+.logo svg{width:26px; height:26px;}
+.nav-links{display:flex; gap:34px; font-size:0.94rem; font-weight:500;}
+.nav-links a{position:relative; padding:4px 0;}
+.nav-links a::after{content:""; position:absolute; left:0; bottom:0; width:0; height:1.5px; background:var(--clay); transition:width .25s ease;}
+.nav-links a:hover::after{width:100%;}
+.nav-cta{
+  background:var(--forest); color:var(--paper); padding:10px 20px; border-radius:30px;
+  font-size:0.88rem; font-weight:500; white-space:nowrap;
+}
+.burger{display:none; flex-direction:column; gap:5px; cursor:pointer; z-index:200;}
+.burger span{width:24px; height:2px; background:var(--ink);}
+
+/* ===== HERO ===== */
+.hero{
+  position:relative; min-height:100svh; display:flex; align-items:flex-end;
+  padding-bottom:90px; padding-top:140px;
+  background: linear-gradient(180deg, rgba(19,38,28,0.15), rgba(19,38,28,0.78)), url('Images/1000376587.jpg') center/cover no-repeat;
+  color:var(--paper);
+}
+.hero::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background: radial-gradient(900px 500px at 85% 0%, rgba(93,138,95,0.35), transparent 60%);
+}
+.hero-inner{position:relative; z-index:2; width:100%;}
+.hero .eyebrow{color:#d9e7d3;}
+.hero .eyebrow::before{background:#e3b27e;}
+.hero h1{
+  font-size:clamp(2.6rem, 6.4vw, 5.1rem); line-height:0.98; margin:18px 0 22px; max-width:13ch;
+}
+.hero h1 em{font-style:italic; color:#e3b27e; font-weight:500;}
+.hero p{max-width:480px; font-size:1.05rem; line-height:1.6; color:#e9ede4; margin-bottom:34px;}
+.hero-actions{display:flex; gap:16px; flex-wrap:wrap;}
+.btn{
+  display:inline-flex; align-items:center; gap:9px; padding:15px 28px; border-radius:30px;
+  font-weight:500; font-size:0.95rem; border:1px solid transparent; cursor:pointer;
+  transition:transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+}
+.btn-primary{background:var(--clay); color:var(--paper);}
+.btn-primary:hover{transform:translateY(-2px); background:#a85b30;}
+.btn-ghost{border-color:rgba(255,252,245,0.5); color:var(--paper);}
+.btn-ghost:hover{background:rgba(255,252,245,0.12); transform:translateY(-2px);}
+.btn-dark{background:var(--forest); color:var(--paper);}
+.btn-dark:hover{transform:translateY(-2px); background:var(--forest-deep);}
+
+.hero-stats{
+  position:absolute; right:24px; bottom:90px; z-index:2;
+  display:flex; flex-direction:column; gap:14px;
+  font-family:'DM Mono', monospace; font-size:0.78rem; color:#e9ede4; text-align:right;
+}
+.hero-stats div b{display:block; font-family:'Fraunces', serif; font-size:1.6rem; color:var(--paper); font-weight:600;}
+
+.scroll-cue{
+  position:absolute; left:24px; bottom:34px; z-index:2; color:#cfe0c9;
+  font-family:'DM Mono', monospace; font-size:0.72rem; letter-spacing:0.1em;
+  display:flex; align-items:center; gap:10px;
+}
+.scroll-cue .line{width:1px; height:34px; background:linear-gradient(#cfe0c9, transparent); animation:cue 1.8s infinite;}
+@keyframes cue{0%{transform:scaleY(0); transform-origin:top;}50%{transform:scaleY(1); transform-origin:top;}100%{transform:scaleY(0); transform-origin:bottom;}}
+
+/* ===== SECTION GENERIC ===== */
+section{padding:110px 0;}
+.section-head{display:flex; justify-content:space-between; align-items:flex-end; gap:30px; margin-bottom:54px; flex-wrap:wrap;}
+.section-head h2{font-size:clamp(2rem, 4vw, 3rem); max-width:14ch;}
+.section-head p{max-width:380px; color:#5a5c52; line-height:1.6; font-size:0.98rem;}
+
+/* ===== ABOUT ===== */
+.about{background:var(--paper);}
+.about-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:60px; align-items:center;}
+.about-copy p{color:#454739; line-height:1.8; margin-bottom:18px; font-size:1.02rem;}
+.about-photo{
+  position:relative; border-radius:var(--radius); overflow:hidden; aspect-ratio:4/5;
+}
+.about-photo img{width:100%; height:100%; object-fit:cover;}
+.about-photo .tag{
+  position:absolute; left:18px; bottom:18px; background:rgba(255,252,245,0.92);
+  padding:14px 18px; border-radius:14px; font-family:'DM Mono', monospace; font-size:0.74rem; color:var(--forest);
+  max-width:200px; line-height:1.4;
+}
+.leaf-divider{
+  width:100%; height:60px; margin:0 auto;
+}
+
+/* ===== AMENITIES ===== */
+.amenities{background:var(--forest); color:var(--paper);}
+.amenities .eyebrow{color:#bcd6b6;}
+.amenities .eyebrow::before{background:#e3b27e;}
+.amenities .section-head p{color:#cfdccb;}
+.amen-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(255,252,245,0.14); border-radius:var(--radius); overflow:hidden;}
+.amen-card{background:var(--forest); padding:34px 26px; transition:background .3s ease;}
+.amen-card:hover{background:var(--forest-deep);}
+.amen-card .num{font-family:'DM Mono', monospace; font-size:0.74rem; color:#e3b27e; margin-bottom:18px; display:block;}
+.amen-card h3{font-size:1.15rem; font-weight:500; margin-bottom:8px;}
+.amen-card p{font-size:0.88rem; color:#bcd0b6; line-height:1.55;}
+
+/* ===== GALLERY ===== */
+.gallery{background:var(--sand);}
+.gal-grid{display:grid; grid-template-columns:repeat(4, 1fr); grid-auto-rows:160px; gap:12px;}
+.gal-grid figure{
+  border-radius:16px; overflow:hidden; cursor:pointer; position:relative; margin:0;
+}
+.gal-grid figure img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease;}
+.gal-grid figure:hover img{transform:scale(1.08);}
+.gal-grid figure::after{content:"⤢"; position:absolute; top:10px; right:10px; color:#fff; font-size:0.85rem; background:rgba(31,58,44,0.55); width:26px; height:26px; display:flex; align-items:center; justify-content:center; border-radius:50%; opacity:0; transition:opacity .25s ease;}
+.gal-grid figure:hover::after{opacity:1;}
+.gal-grid figure:nth-child(1){grid-column:span 2; grid-row:span 2;}
+.gal-grid figure:nth-child(4){grid-row:span 2;}
+
+.lightbox{
+  position:fixed; inset:0; background:rgba(19,38,28,0.94); z-index:1000; display:none;
+  align-items:center; justify-content:center; padding:24px;
+}
+.lightbox.open{display:flex;}
+.lightbox img{max-width:min(900px,92vw); max-height:84vh; border-radius:14px;}
+.lightbox .close{position:absolute; top:24px; right:30px; color:#fff; font-size:1.8rem; cursor:pointer;}
+.lightbox .nav-btn{position:absolute; top:50%; transform:translateY(-50%); color:#fff; font-size:2rem; cursor:pointer; padding:10px; opacity:0.7;}
+.lightbox .nav-btn:hover{opacity:1;}
+.lightbox .prev{left:18px;} .lightbox .next{right:18px;}
+
+/* ===== LOCATION ===== */
+.location{background:var(--paper);}
+.loc-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:stretch;}
+.loc-card{background:var(--sand); border-radius:var(--radius); padding:38px; display:flex; flex-direction:column; justify-content:space-between;}
+.loc-card h3{font-size:1.6rem; margin-bottom:14px;}
+.loc-card p{color:#52543f; line-height:1.7; margin-bottom:26px;}
+.loc-list{list-style:none; margin-bottom:30px;}
+.loc-list li{display:flex; gap:12px; padding:10px 0; border-bottom:1px dashed var(--line); font-size:0.95rem; color:#3a3c30;}
+.loc-list li b{color:var(--forest);}
+.map-frame{border-radius:var(--radius); overflow:hidden; min-height:340px; border:1px solid var(--line);}
+.map-frame iframe{width:100%; height:100%; min-height:340px; border:0;}
+
+/* ===== BOOKING ===== */
+.booking{background:var(--forest-deep); color:var(--paper); position:relative; overflow:hidden;}
+.booking::before{content:""; position:absolute; width:600px; height:600px; border-radius:50%; background:radial-gradient(circle, rgba(93,138,95,0.35), transparent 65%); top:-200px; right:-200px;}
+.book-grid{position:relative; z-index:2; display:grid; grid-template-columns:0.85fr 1.15fr; gap:60px; align-items:flex-start;}
+.book-copy p{color:#cfdccb; line-height:1.75; margin-bottom:26px; max-width:40ch;}
+.book-contacts{display:flex; flex-direction:column; gap:16px; margin-top:30px;}
+.book-contacts a{display:flex; align-items:center; gap:12px; font-size:0.96rem; color:#e9ede4; transition:color .2s ease;}
+.book-contacts a:hover{color:#e3b27e;}
+.book-contacts .ico{width:38px; height:38px; border:1px solid rgba(255,252,245,0.3); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+
+.form-card{background:var(--paper); color:var(--ink); border-radius:var(--radius); padding:38px; box-shadow:0 30px 60px rgba(0,0,0,0.25);}
+.form-row{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;}
+.field{display:flex; flex-direction:column; gap:7px;}
+.field.full{grid-column:1/-1;}
+.field label{font-size:0.78rem; font-weight:500; color:var(--forest); font-family:'DM Mono', monospace; letter-spacing:0.03em;}
+.field input, .field select, .field textarea{
+  border:1px solid var(--line); border-radius:12px; padding:13px 14px; font-family:'DM Sans', sans-serif;
+  font-size:0.95rem; background:var(--paper); color:var(--ink); transition:border-color .2s ease;
+}
+.field input:focus, .field select:focus, .field textarea:focus{outline:none; border-color:var(--moss);}
+.field textarea{resize:vertical; min-height:80px;}
+.nights-pill{
+  display:inline-flex; align-items:center; gap:8px; background:var(--sand); color:var(--forest);
+  padding:8px 14px; border-radius:20px; font-size:0.82rem; font-family:'DM Mono', monospace; margin-top:4px;
+}
+.submit-row{display:flex; align-items:center; gap:16px; margin-top:8px; flex-wrap:wrap;}
+.form-note{font-size:0.78rem; color:#8a8c7d;}
+.form-msg{margin-top:14px; font-size:0.88rem; padding:12px 14px; border-radius:10px; display:none;}
+.form-msg.ok{display:block; background:#e7f1e3; color:#2c5530;}
+.form-msg.err{display:block; background:#fbe6e1; color:#a3392a;}
+.spinner{width:16px; height:16px; border:2px solid rgba(255,252,245,0.5); border-top-color:#fff; border-radius:50%; animation:spin .7s linear infinite; display:none;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.btn-primary[disabled]{opacity:0.7; cursor:not-allowed;}
+
+/* ===== FOOTER ===== */
+footer{background:var(--forest-deep); color:#a6b9a0; padding:50px 0 30px; font-size:0.85rem;}
+.foot-grid{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; padding-bottom:30px; border-bottom:1px solid rgba(255,252,245,0.1);}
+.foot-bottom{display:flex; justify-content:space-between; padding-top:24px; flex-wrap:wrap; gap:10px;}
+.foot-social{display:flex; gap:16px;}
+.foot-social a{width:36px; height:36px; border:1px solid rgba(255,252,245,0.2); border-radius:50%; display:flex; align-items:center; justify-content:center;}
+
+/* ===== WHATSAPP FLOAT ===== */
+.wa-float{
+  position:fixed; right:22px; bottom:22px; z-index:90; background:#25D366; width:56px; height:56px;
+  border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 26px rgba(0,0,0,0.28);
+  transition:transform .25s ease;
+}
+.wa-float:hover{transform:scale(1.08);}
+
+/* ===== REVEAL ===== */
+.reveal{opacity:0; transform:translateY(26px); transition:opacity .7s ease, transform .7s ease;}
+.reveal.show{opacity:1; transform:translateY(0);}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:980px){
+  .about-grid, .loc-grid, .book-grid{grid-template-columns:1fr;}
+  .amen-grid{grid-template-columns:repeat(2,1fr);}
+  .gal-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:150px;}
+  .gal-grid figure:nth-child(1){grid-column:span 2; grid-row:span 1;}
+  .hero-stats{display:none;}
+}
+@media(max-width:760px){
+  .nav-links{
+    position:fixed; inset:0 0 0 30%; background:var(--forest); flex-direction:column; justify-content:center;
+    align-items:flex-start; padding:40px; gap:26px; transform:translateX(100%); transition:transform .35s ease; z-index:150;
+  }
+  .nav-links.open{transform:translateX(0);}
+  .nav-links a{color:var(--paper); font-size:1.2rem;}
+  .nav-cta{display:none;}
+  .burger{display:flex;}
+  .hero{padding-top:110px; padding-bottom:60px;}
+  .hero h1{max-width:none;}
+  section{padding:70px 0;}
+  .form-row{grid-template-columns:1fr;}
+  .submit-row{flex-direction:column; align-items:stretch;}
+  .submit-row .btn{justify-content:center;}
+  .foot-grid, .foot-bottom{flex-direction:column; align-items:flex-start;}
+}
+@media(prefers-reduced-motion: reduce){
+  *{animation:none !important; transition:none !important;}
+}
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <nav class="wrap">
+    <a href="#home" class="logo">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C8 6 5 9.5 5 13.5C5 17.6 8.1 21 12 21C15.9 21 19 17.6 19 13.5C19 9.5 16 6 12 2Z" fill="#5d8a5f"/></svg>
+      Green View Farm House
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#about" onclick="closeMenu()">About</a>
+      <a href="#gallery" onclick="closeMenu()">Gallery</a>
+      <a href="#location" onclick="closeMenu()">Location</a>
+      <a href="#booking" onclick="closeMenu()">Booking</a>
+    </div>
+    <a href="#booking" class="nav-cta">Check Availability</a>
+    <div class="burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-stats">
+    <div><b>20+</b>guests capacity</div>
+    <div><b>Goregaon</b>East, Mumbai</div>
+    <div><b>4.8★</b>guest rated</div>
+  </div>
+  <div class="wrap hero-inner">
+    <div class="eyebrow">Goregaon East · Mumbai</div>
+    <h1>A green escape, <em>away</em> from the city noise.</h1>
+    <p>Birthdays, family trips, weekend resets or private celebrations — Green View Farm House gives you open skies, fresh air and a quiet stretch of nature, just outside Mumbai.</p>
+    <div class="hero-actions">
+      <a href="#booking" class="btn btn-primary">Book This Farm House</a>
+      <a href="#gallery" class="btn btn-ghost">View Gallery</a>
+    </div>
+  </div>
+  <div class="scroll-cue"><div class="line"></div>Scroll</div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <div class="eyebrow">Our Story</div>
+      <h2 style="margin:16px 0 22px;">Built for slow mornings and loud celebrations alike.</h2>
+      <div class="about-copy">
+        <p>Green View Farm House is a peaceful getaway surrounded by nature, offering a perfect escape from the busy city life of Mumbai. Located in the green surroundings of Goregaon East, it's designed for people who want to relax, celebrate and spend quality time with the ones they love.</p>
+        <p>Whether it's a birthday party, a family gathering, a small celebration or a weekend break — the property is built around open space, greenery and fresh air, far from the noise of the city.</p>
+      </div>
+      <a href="#booking" class="btn btn-dark">Plan Your Visit</a>
+    </div>
+    <div class="about-photo reveal">
+      <img src="Images/1000376623.jpg" alt="Green View Farm House outdoor view" loading="lazy">
+      <div class="tag">Open lawns, shaded seating & a calm, green view from every corner.</div>
+    </div>
+  </div>
+</section>
+
+<section class="amenities">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow">What's Included</div>
+        <h2 style="margin-top:14px;">Everything for a comfortable day out.</h2>
+      </div>
+      <p>From private celebrations to quiet weekends — the space adapts to what you need.</p>
+    </div>
+    <div class="amen-grid reveal">
+      <div class="amen-card"><span class="num">01</span><h3>Open Lawn & Garden</h3><p>Wide green lawns for games, parties and relaxed gatherings.</p></div>
+      <div class="amen-card"><span class="num">02</span><h3>Party & Event Space</h3><p>Birthdays, anniversaries and private celebrations welcome.</p></div>
+      <div class="amen-card"><span class="num">03</span><h3>Family Friendly</h3><p>Safe, calm surroundings, great for kids and elders alike.</p></div>
+      <div class="amen-card"><span class="num">04</span><h3>Easy City Access</h3><p>Just a short drive from Goregaon East — no long travel needed.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow">Gallery</div>
+        <h2 style="margin-top:14px;">A look around the farm house.</h2>
+      </div>
+      <p>Tap any photo to view it full screen.</p>
+    </div>
+    <div class="gal-grid reveal" id="galGrid">
+      <figure data-i="0"><img src="Images/1000376587.jpg" alt="Green View Farm House photo 1" loading="lazy"></figure>
+      <figure data-i="1"><img src="Images/1000451941.jpg" alt="Green View Farm House photo 2" loading="lazy"></figure>
+      <figure data-i="2"><img src="Images/1000376623.jpg" alt="Green View Farm House photo 3" loading="lazy"></figure>
+      <figure data-i="3"><img src="Images/1000376603.jpg" alt="Green View Farm House photo 4" loading="lazy"></figure>
+      <figure data-i="4"><img src="Images/1000451229.jpg" alt="Green View Farm House photo 5" loading="lazy"></figure>
+      <figure data-i="5"><img src="Images/1000376583.jpg" alt="Green View Farm House photo 6" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox">
+  <span class="close" id="lbClose">✕</span>
+  <span class="nav-btn prev" id="lbPrev">‹</span>
+  <img id="lbImg" src="" alt="Gallery preview">
+  <span class="nav-btn next" id="lbNext">›</span>
+</div>
+
+<section class="location" id="location">
+  <div class="wrap loc-grid">
+    <div class="loc-card reveal">
+      <div>
+        <div class="eyebrow">Find Us</div>
+        <h3 style="margin-top:14px;">Goregaon East, Mumbai</h3>
+        <p>Easy to reach from across Mumbai, with green open space the moment you arrive.</p>
+        <ul class="loc-list">
+          <li><b>Area:</b> Goregaon East, Mumbai</li>
+          <li><b>Best for:</b> Day outings, parties, weekend stays</li>
+          <li><b>Parking:</b> Available on-site</li>
+        </ul>
+      </div>
+      <a href="https://share.google/9Yw0OF5d7fDxXyf2x" target="_blank" rel="noopener" class="btn btn-dark">Open in Google Maps</a>
+    </div>
+    <div class="map-frame reveal">
+      <iframe src="https://maps.google.com/maps?q=Green%20View%20Farm%20House%20Goregaon%20East&t=&z=14&ie=UTF8&iwloc=&output=embed" loading="lazy" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="booking" id="booking">
+  <div class="wrap book-grid">
+    <div class="book-copy reveal">
+      <div class="eyebrow">Booking</div>
+      <h2 style="margin:16px 0 20px;">Tell us your dates, we'll confirm fast.</h2>
+      <p>Fill the form with your check-in date, check-out date and guest count. We'll get back to you on call or WhatsApp to confirm your booking.</p>
+      <div class="book-contacts">
+        <a href="tel:+919702961792"><span class="ico">📞</span> +91 97029 61792</a>
+        <a href="https://wa.me/919702961792" target="_blank" rel="noopener"><span class="ico">💬</span> Chat on WhatsApp</a>
+        <a href="mailto:booking@greenviewfarmhouse.com"><span class="ico">✉️</span> booking@greenviewfarmhouse.com</a>
+      </div>
+    </div>
+
+    <form class="form-card reveal" id="bookingForm">
+      <div class="form-row">
+        <div class="field"><label for="name">Full Name</label><input type="text" id="name" name="name" required placeholder="Your name"></div>
+        <div class="field"><label for="phone">Phone Number</label><input type="tel" id="phone" name="phone" required placeholder="10-digit mobile number" pattern="[0-9]{10}"></div>
+      </div>
+      <div class="form-row">
+        <div class="field"><label for="checkin">Check-In Date</label><input type="date" id="checkin" name="checkin" required></div>
+        <div class="field"><label for="checkout">Check-Out Date</label><input type="date" id="checkout" name="checkout" required></div>
+      </div>
+      <div class="form-row">
+        <div class="field"><label for="guests">Number of Guests</label><input type="number" id="guests" name="guests" min="1" max="200" required placeholder="e.g. 15"></div>
+        <div class="field"><label for="purpose">Purpose</label>
+          <select id="purpose" name="purpose">
+            <option>Birthday Party</option>
+            <option>Family Trip</option>
+            <option>Weekend Stay</option>
+            <option>Private Event</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="field full" style="margin-bottom:16px;">
+        <label for="message">Message (optional)</label>
+        <textarea id="message" name="message" placeholder="Anything else we should know?"></textarea>
+      </div>
+      <span class="nights-pill" id="nightsPill" style="display:none;"></span>
+      <div class="submit-row" style="margin-top:18px;">
+        <button type="submit" class="btn btn-primary" id="submitBtn">
+          <span class="spinner" id="spinner"></span>
+          <span id="submitLabel">Send Booking Request</span>
+        </button>
+        <span class="form-note">We typically reply within a few hours.</span>
+      </div>
+      <div class="form-msg" id="formMsg"></div>
+    </form>
+  </div>
+</section>
+
+<a href="https://wa.me/919702961792" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.75.46 3.46 1.34 4.96L2 22l5.2-1.36a9.93 9.93 0 0 0 4.84 1.23h.01c5.5 0 9.96-4.46 9.96-9.96S17.54 2 12.04 2zm0 18.18h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.1.81.83-3.02-.2-.31a8.22 8.22 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.21-8.26 8.21zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.99-1.22-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42-.14 0-.31-.01-.47-.01-.17 0-.43.06-.66.31-.23.25-.86.84-.86 2.04 0 1.2.88 2.37 1 2.53.12.17 1.74 2.66 4.22 3.73.59.25 1.05.4 1.41.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.14-1.18-.07-.1-.23-.16-.48-.28z"/></svg>
+</a>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="logo" style="color:var(--paper); font-size:1.1rem;">Green View Farm House</div>
+      <div class="foot-social">
+        <a href="https://www.instagram.com/greenview_farmhouse" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+        <a href="https://wa.me/919702961792" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
+        <a href="tel:+919702961792" aria-label="Call">📞</a>
+      </div>
+    </div>
+    <div class="foot-bottom wrap" style="padding-left:0; padding-right:0;">
+      <span>© 2026 Green View Farm House. All rights reserved.</span>
+      <span>Goregaon East, Mumbai</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ====== CONFIG: paste your Google Apps Script Web App URL here ====== */
+const SHEET_ENDPOINT = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+
+/* ===== Header scroll state ===== */
+const header = document.getElementById('siteHeader');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 30);
+});
+
+/* ===== Mobile menu ===== */
+const navLinks = document.getElementById('navLinks');
+function toggleMenu(){ navLinks.classList.toggle('open'); }
+function closeMenu(){ navLinks.classList.remove('open'); }
+
+/* ===== Reveal on scroll ===== */
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); } });
+},{threshold:0.15});
+revealEls.forEach(el=>io.observe(el));
+
+/* ===== Lightbox gallery ===== */
+const images = Array.from(document.querySelectorAll('#galGrid img')).map(img=>img.src);
+const lightbox = document.getElementById('lightbox');
+const lbImg = document.getElementById('lbImg');
+let lbIndex = 0;
+function openLightbox(i){ lbIndex = i; lbImg.src = images[i]; lightbox.classList.add('open'); }
+document.querySelectorAll('#galGrid figure').forEach(fig=>{
+  fig.addEventListener('click', ()=> openLightbox(parseInt(fig.dataset.i)));
+});
+document.getElementById('lbClose').addEventListener('click', ()=> lightbox.classList.remove('open'));
+lightbox.addEventListener('click', (e)=>{ if(e.target === lightbox) lightbox.classList.remove('open'); });
+document.getElementById('lbPrev').addEventListener('click', ()=>{ lbIndex = (lbIndex-1+images.length)%images.length; lbImg.src = images[lbIndex]; });
+document.getElementById('lbNext').addEventListener('click', ()=>{ lbIndex = (lbIndex+1)%images.length; lbImg.src = images[lbIndex]; });
+document.addEventListener('keydown', (e)=>{
+  if(!lightbox.classList.contains('open')) return;
+  if(e.key === 'Escape') lightbox.classList.remove('open');
+  if(e.key === 'ArrowRight') document.getElementById('lbNext').click();
+  if(e.key === 'ArrowLeft') document.getElementById('lbPrev').click();
+});
+
+/* ===== Date logic ===== */
+const checkin = document.getElementById('checkin');
+const checkout = document.getElementById('checkout');
+const nightsPill = document.getElementById('nightsPill');
+const todayStr = new Date().toISOString().split('T')[0];
+checkin.min = todayStr;
+checkout.min = todayStr;
+
+function updateNights(){
+  if(checkin.value && checkout.value){
+    const d1 = new Date(checkin.value);
+    const d2 = new Date(checkout.value);
+    const diff = Math.round((d2-d1)/86400000);
+    if(diff > 0){
+      nightsPill.style.display = 'inline-flex';
+      nightsPill.textContent = `🗓 ${diff} night${diff>1?'s':''} stay`;
+    } else {
+      nightsPill.style.display = 'none';
+    }
+  }
+}
+checkin.addEventListener('change', ()=>{
+  checkout.min = checkin.value;
+  if(checkout.value && checkout.value <= checkin.value){ checkout.value = ''; }
+  updateNights();
+});
+checkout.addEventListener('change', updateNights);
+
+/* ===== Form submit -> Google Sheet via Apps Script ===== */
+const form = document.getElementById('bookingForm');
+const submitBtn = document.getElementById('submitBtn');
+const spinner = document.getElementById('spinner');
+const submitLabel = document.getElementById('submitLabel');
+const formMsg = document.getElementById('formMsg');
+
+form.addEventListener('submit', async function(e){
+  e.preventDefault();
+  formMsg.className = 'form-msg';
+  formMsg.style.display = 'none';
+
+  const data = {
+    name: document.getElementById('name').value.trim(),
+    phone: document.getElementById('phone').value.trim(),
+    checkin: checkin.value,
+    checkout: checkout.value,
+    guests: document.getElementById('guests').value,
+    purpose: document.getElementById('purpose').value,
+    message: document.getElementById('message').value.trim(),
+    submittedAt: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
+  };
+
+  if(new Date(data.checkout) <= new Date(data.checkin)){
+    formMsg.textContent = "Check-out date must be after check-in date.";
+    formMsg.classList.add('err');
+    formMsg.style.display = 'block';
+    return;
+  }
+
+  submitBtn.disabled = true;
+  spinner.style.display = 'inline-block';
+  submitLabel.textContent = 'Sending...';
+
+  try{
+    if(SHEET_ENDPOINT.includes('PASTE_YOUR')){
+      throw new Error('NOT_CONFIGURED');
+    }
+    await fetch(SHEET_ENDPOINT, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(data)
+    });
+    formMsg.textContent = "✅ Booking request sent! We'll contact you shortly to confirm.";
+    formMsg.classList.add('ok');
+    formMsg.style.display = 'block';
+    form.reset();
+    nightsPill.style.display = 'none';
+  } catch(err){
+    // Fallback: open WhatsApp pre-filled with the booking details
+    const waText = encodeURIComponent(
+      `Booking Request - Green View Farm House\nName: ${data.name}\nPhone: ${data.phone}\nCheck-in: ${data.checkin}\nCheck-out: ${data.checkout}\nGuests: ${data.guests}\nPurpose: ${data.purpose}\nMessage: ${data.message}`
+    );
+    window.open(`https://wa.me/919702961792?text=${waText}`, '_blank');
+    formMsg.textContent = "We've opened WhatsApp with your details pre-filled — just hit send there to confirm.";
+    formMsg.classList.add('ok');
+    formMsg.style.display = 'block';
+  } finally {
+    submitBtn.disabled = false;
+    spinner.style.display = 'none';
+    submitLabel.textContent = 'Send Booking Request';
+  }
+});
+</script>
+</body>
+</html>
