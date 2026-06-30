@@ -4,15 +4,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Green View Farm House | Goregaon East, Mumbai</title>
-<meta name="description" content="Green View Farm House a peaceful nature getaway in Goregaon East, Mumbai. Book for birthdays, family trips & private events.">
+<meta name="description" content="Green View Farm House — a peaceful nature getaway in Goregaon East, Mumbai. Book for birthdays, family trips & private events.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-:root{ 
-  [data-theme="dark"]{
+:root{
+  --forest:#1f3a2c;
+  --forest-deep:#13261c;
+  --moss:#5d8a5f;
+  --sand:#f4ecd9;
+  --paper:#fffcf5;
+  --clay:#bd6a3c;
+  --ink:#23241f;
+  --line: rgba(31,58,44,0.16);
+  --radius: 22px;
+}
+[data-theme="dark"]{
   --forest:#a9c9a5;
   --forest-deep:#0e1813;
   --moss:#8fbf8a;
@@ -27,18 +37,8 @@ body{ transition:background .35s ease, color .35s ease; }
   background: linear-gradient(180deg, rgba(10,16,12,0.35), rgba(10,16,12,0.9)), url('Images/1000376587.jpg') center/cover no-repeat;
 }
 [data-theme="dark"] .form-card{ box-shadow:0 30px 60px rgba(0,0,0,0.45); }
-[data-theme="dark"] header.scrolled{ background:rgba(20,33,26,0.92); } 
-  
-  --forest:#1f3a2c;
-  --forest-deep:#13261c;
-  --moss:#5d8a5f;
-  --sand:#f4ecd9;
-  --paper:#fffcf5;
-  --clay:#bd6a3c;
-  --ink:#23241f;
-  --line: rgba(31,58,44,0.16);
-  --radius: 22px;
-}
+[data-theme="dark"] header.scrolled{ background:rgba(20,33,26,0.92); }
+
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{
@@ -70,20 +70,22 @@ header{
   padding:22px 0;
 }
 header.scrolled{background:rgba(255,252,245,0.92); backdrop-filter:blur(10px); box-shadow:0 1px 0 var(--line); padding:14px 0;}
-nav{display:flex; align-items:center; justify-content:space-between;}
+nav{display:flex; align-items:center; justify-content:space-between; gap:14px;}
 .logo{font-family:'Fraunces', serif; font-weight:600; font-size:1.25rem; display:flex; align-items:center; gap:9px;}
 .logo svg{width:26px; height:26px;}
 .nav-links{display:flex; gap:34px; font-size:0.94rem; font-weight:500;}
 .nav-links a{position:relative; padding:4px 0;}
 .nav-links a::after{content:""; position:absolute; left:0; bottom:0; width:0; height:1.5px; background:var(--clay); transition:width .25s ease;}
 .nav-links a:hover::after{width:100%;}
+.nav-right{display:flex; align-items:center; gap:14px;}
 .nav-cta{
   background:var(--forest); color:var(--paper); padding:10px 20px; border-radius:30px;
   font-size:0.88rem; font-weight:500; white-space:nowrap;
 }
 .burger{display:none; flex-direction:column; gap:5px; cursor:pointer; z-index:200;}
-.theme-toggle{ width:38px; height:38px; }
-.burger span{width:24px; height:2px; background:var(--ink);} 
+.burger span{width:24px; height:2px; background:var(--ink);}
+
+/* ===== THEME TOGGLE ===== */
 .theme-toggle{
   width:42px; height:42px; border-radius:50%; border:1px solid var(--line);
   background:var(--paper); color:var(--ink); display:flex; align-items:center; justify-content:center;
@@ -283,6 +285,7 @@ footer{background:var(--forest-deep); color:#a6b9a0; padding:50px 0 30px; font-s
   .nav-links a{color:var(--paper); font-size:1.2rem;}
   .nav-cta{display:none;}
   .burger{display:flex;}
+  .theme-toggle{ width:38px; height:38px; }
   .hero{padding-top:110px; padding-bottom:60px;}
   .hero h1{max-width:none;}
   section{padding:70px 0;}
@@ -310,8 +313,14 @@ footer{background:var(--forest-deep); color:#a6b9a0; padding:50px 0 30px; font-s
       <a href="#location" onclick="closeMenu()">Location</a>
       <a href="#booking" onclick="closeMenu()">Booking</a>
     </div>
-    <a href="#booking" class="nav-cta">Check Availability</a>
-    <div class="burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a href="#booking" class="nav-cta">Check Availability</a>
+      <div class="burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+    </div>
   </nav>
 </header>
 
@@ -324,7 +333,7 @@ footer{background:var(--forest-deep); color:#a6b9a0; padding:50px 0 30px; font-s
   <div class="wrap hero-inner">
     <div class="eyebrow">Goregaon East · Mumbai</div>
     <h1>A green escape, <em>away</em> from the city noise.</h1>
-    <p>Birthdays, family trips, weekend resets or private celebrations Green View Farm House gives you open skies, fresh air and a quiet stretch of nature, just outside Mumbai.</p>
+    <p>Birthdays, family trips, weekend resets or private celebrations — Green View Farm House gives you open skies, fresh air and a quiet stretch of nature, just outside Mumbai.</p>
     <div class="hero-actions">
       <a href="#booking" class="btn btn-primary">Book This Farm House</a>
       <a href="#gallery" class="btn btn-ghost">View Gallery</a>
@@ -340,7 +349,7 @@ footer{background:var(--forest-deep); color:#a6b9a0; padding:50px 0 30px; font-s
       <h2 style="margin:16px 0 22px;">Built for slow mornings and loud celebrations alike.</h2>
       <div class="about-copy">
         <p>Green View Farm House is a peaceful getaway surrounded by nature, offering a perfect escape from the busy city life of Mumbai. Located in the green surroundings of Goregaon East, it's designed for people who want to relax, celebrate and spend quality time with the ones they love.</p>
-        <p>Whether it's a birthday party, a family gathering, a small celebration or a weekend break the property is built around open space, greenery and fresh air, far from the noise of the city.</p>
+        <p>Whether it's a birthday party, a family gathering, a small celebration or a weekend break — the property is built around open space, greenery and fresh air, far from the noise of the city.</p>
       </div>
       <a href="#booking" class="btn btn-dark">Plan Your Visit</a>
     </div>
@@ -358,7 +367,7 @@ footer{background:var(--forest-deep); color:#a6b9a0; padding:50px 0 30px; font-s
         <div class="eyebrow">What's Included</div>
         <h2 style="margin-top:14px;">Everything for a comfortable day out.</h2>
       </div>
-      <p>From private celebrations to quiet weekends the space adapts to what you need.</p>
+      <p>From private celebrations to quiet weekends — the space adapts to what you need.</p>
     </div>
     <div class="amen-grid reveal">
       <div class="amen-card"><span class="num">01</span><h3>Open Lawn & Garden</h3><p>Wide green lawns for games, parties and relaxed gatherings.</p></div>
@@ -385,8 +394,8 @@ footer{background:var(--forest-deep); color:#a6b9a0; padding:50px 0 30px; font-s
       <figure data-i="3"><img src="Images/1000376603.jpg" alt="Green View Farm House photo 4" loading="lazy"></figure>
       <figure data-i="4"><img src="Images/1000451229.jpg" alt="Green View Farm House photo 5" loading="lazy"></figure>
       <figure data-i="5"><img src="Images/1000376583.jpg" alt="Green View Farm House photo 6" loading="lazy"></figure>
-      <figure data-i="5"><img src="Images/1000451232.jpg" alt="Green View Farm House photo 7" loading="lazy"></figure>
-      <figure data-i="5"><img src="Images/1000376599.jpg" alt="Green View Farm House photo 8" loading="lazy"></figure>
+      <figure data-i="6"><img src="Images/1000451232.jpg" alt="Green View Farm House photo 7" loading="lazy"></figure>
+      <figure data-i="7"><img src="Images/1000376599.jpg" alt="Green View Farm House photo 8" loading="lazy"></figure>
     </div>
   </div>
 </section>
@@ -425,7 +434,7 @@ footer{background:var(--forest-deep); color:#a6b9a0; padding:50px 0 30px; font-s
       <div class="eyebrow">Booking</div>
       <h2 style="margin:16px 0 20px;">Tell us your dates, we'll confirm fast.</h2>
       <p>Fill the form with your check-in date, check-out date and guest count. We'll get back to you on call or WhatsApp to confirm your booking.</p>
-      <div class="book-contacts"> 
+      <div class="book-contacts">
         <a href="https://www.instagram.com/greenview_farmhouse" target="_blank" rel="noopener"><span class="ico">📷</span> @greenview_farmhouse</a>
         <a href="tel:+919702961792"><span class="ico">📞</span> +91 97029 61792</a>
         <a href="https://wa.me/919702961792" target="_blank" rel="noopener"><span class="ico">💬</span> Chat on WhatsApp</a>
@@ -481,14 +490,14 @@ footer{background:var(--forest-deep); color:#a6b9a0; padding:50px 0 30px; font-s
       <div class="logo" style="color:var(--paper); font-size:1.1rem;">Green View Farm House</div>
       <div class="foot-social">
         <a href="https://www.instagram.com/greenview_farmhouse" target="_blank" rel="noopener" aria-label="Instagram">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
-</a>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+        </a>
         <a href="https://wa.me/919702961792" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
         <a href="tel:+919702961792" aria-label="Call">📞</a>
       </div>
     </div>
     <div class="foot-bottom wrap" style="padding-left:0; padding-right:0;">
-      <span>© 2026 Green View Farm House. All rights reserved.</span> 
+      <span>© 2026 Green View Farm House. All rights reserved.</span>
       <a href="https://www.instagram.com/greenview_farmhouse" target="_blank" rel="noopener">@greenview_farmhouse</a>
       <span>Goregaon East, Mumbai</span>
     </div>
@@ -496,7 +505,7 @@ footer{background:var(--forest-deep); color:#a6b9a0; padding:50px 0 30px; font-s
 </footer>
 
 <script>
-/* ====== CONFIG: paste your Google Apps Script Web App URL here ====== */
+/* ====== CONFIG: Google Apps Script Web App URL ====== */
 const SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbw-cRz7ReNo09TXIatHxZW2TBaoXbk-xIW0z_XrWfkhwh_hTp2W_XHMPOvV-ZBMzgQ/exec";
 
 /* ===== Header scroll state ===== */
@@ -504,7 +513,8 @@ const header = document.getElementById('siteHeader');
 window.addEventListener('scroll', () => {
   header.classList.toggle('scrolled', window.scrollY > 30);
 });
-  
+
+/* ===== Dark / Light theme toggle ===== */
 const themeToggle = document.getElementById('themeToggle');
 const savedTheme = localStorage.getItem('gvf-theme');
 if(savedTheme === 'dark'){ document.documentElement.setAttribute('data-theme','dark'); }
@@ -518,7 +528,7 @@ themeToggle.addEventListener('click', ()=>{
     localStorage.setItem('gvf-theme','dark');
   }
 });
-  
+
 /* ===== Mobile menu ===== */
 const navLinks = document.getElementById('navLinks');
 function toggleMenu(){ navLinks.classList.toggle('open'); }
@@ -614,7 +624,7 @@ form.addEventListener('submit', async function(e){
   submitLabel.textContent = 'Sending...';
 
   try{
-    if(SHEET_ENDPOINT.includes('Paste Your')){
+    if(SHEET_ENDPOINT.includes('PASTE_YOUR')){
       throw new Error('NOT_CONFIGURED');
     }
     await fetch(SHEET_ENDPOINT, {
@@ -629,7 +639,6 @@ form.addEventListener('submit', async function(e){
     form.reset();
     nightsPill.style.display = 'none';
   } catch(err){
-    // Fallback: open WhatsApp pre-filled with the booking details
     const waText = encodeURIComponent(
       `Booking Request - Green View Farm House\nName: ${data.name}\nPhone: ${data.phone}\nCheck-in: ${data.checkin}\nCheck-out: ${data.checkout}\nGuests: ${data.guests}\nPurpose: ${data.purpose}\nMessage: ${data.message}`
     );
