@@ -566,7 +566,7 @@ form.addEventListener('submit', async function(e){
   submitLabel.textContent = 'Sending...';
 
   try{
-    if(SHEET_ENDPOINT.includes('PASTE_YOUR')){
+    if(SHEET_ENDPOINT.includes('https://script.google.com/macros/s/AKfycbw-cRz7ReNo09TXIatHxZW2TBaoXbk-xIW0z_XrWfkhwh_hTp2W_XHMPOvV-ZBMzgQ/exec')){
       throw new Error('NOT_CONFIGURED');
     }
     await fetch(SHEET_ENDPOINT, {
